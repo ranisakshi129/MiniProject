@@ -1,0 +1,83 @@
+import java.util.Random;
+import java.time.LocalTime;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.*;
+public class Rough{
+    static Scanner sc=new Scanner(System.in);
+    public static void sign_up()
+    {
+        System.out.println("Enter your Name:");
+        String name=sc.next();
+        System.out.println("Enter your email/phone_number:");
+        String email=sc.next();
+        System.out.println("Enter password:");
+        int password=sc.nextInt();
+    }
+    public static void login()
+    {
+        System.out.println("Enter your phone_no:");
+        String phone_no=sc.next();
+    }
+    public static void words()
+    {
+        String[] words={"Envelope","Cantelop","America","Astronaut","Kingley","Katmandu","Jonny","Diksha","Pop"};
+        Random rand=new Random();
+        for(int i=0;i<10;i++)
+        {
+        System.out.print(words[rand.nextInt(9)] +" ");
+    }
+    }
+    public static void paragraph()
+    {
+        StringBuilder sentence=new StringBuilder("Java is an object oriented programming language and it is independent from platform. Java Language developed by James Gosling in 1995.");
+        System.out.println(sentence);
+    }
+    public static void main(String[] args) throws InterruptedException{
+        StringBuilder sb=new StringBuilder();
+        System.out.println("Enter the number to choose the operation:\n1.Sign up\n2.Login");
+        int num=sc.nextInt();
+        switch (num){
+            case 1: System.out.println("Sign up.......");
+                    sign_up(); 
+                    break;
+            case 2: System.out.println("Login......");
+                    login();
+                    break;
+            default:System.out.println("<<<<Select appropriate option>>>>");
+        }
+        System.out.println("LOADING......");
+        TimeUnit.SECONDS.sleep(2);
+        System.out.println("------Welcome to TypingSpeedTest(TST)-------");
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("Select the criteria :\n1.Words \n2.Paragraph");
+        int option=sc.nextInt();
+        switch(option){
+            case 1:System.out.println("TYPED THESE WORDS:");
+                    words();
+                    break;
+            case 2:System.out.println("TYPED THE PARAGRAPH:");
+                    paragraph();
+                    break;
+            default:System.out.println("Select appropriate option");
+        }
+        System.out.println();
+        System.out.println("3");
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("2");
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("1");
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("-------------START TYPING---------");
+        System.out.println(); 
+        double start =LocalTime.now().toNanoOfDay();
+        String typewords=sc.nextLine();
+        double end =LocalTime.now().toNanoOfDay();
+        double eclapsedTime=end-start;
+        double seconds=eclapsedTime/1000000000.0;
+        int numChars=typewords.length();
+        System.out.println(eclapsedTime);
+        int wpm=(int)((((double)numChars/5)/seconds) *60);
+        System.out.println("Your wpm are:"+ wpm +"!");
+}
+}
